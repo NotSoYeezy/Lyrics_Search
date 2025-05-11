@@ -8,7 +8,7 @@ import io
 def save_to_tsv(file_path: str="../search_engine_tutorial/all_lyrics.tsv"):
     lyrics_dir = 'lyrics'
 
-    output_tsv_file = '../search_engine/all_lyrics.tsv'
+    output_tsv_file = '../search_engine/data/all_lyrics.tsv'
 
     all_lyrics_data = []
 
