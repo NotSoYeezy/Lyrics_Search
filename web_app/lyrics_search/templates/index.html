@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .light-mode {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body class="light-mode transition-colors duration-300">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+        <div class="w-full max-w-md text-center">
+            <h1 class="text-4xl font-bold mb-6 text-white">Polish Lyrics Search</h1>
+            <input type="text" id="search-bar" placeholder="Type a song, artist, or lyrics..." class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button id="search-button" class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Search</button>
+        </div>
+        <div id="results" class="mt-8 w-full max-w-md"></div>
+    </div>
+
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-lg w-11/12 max-w-lg relative max-h-[90vh] flex flex-col">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl" style="position: absolute; top: 10px; right: 10px;">&times;</button>
+            <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
+            <div class="overflow-y-auto pr-2 flex-grow max-h-[60vh]" style="overflow-y: auto;">
+                <p id="modal-lyrics" class="whitespace-pre-wrap"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</body>
+</html>
