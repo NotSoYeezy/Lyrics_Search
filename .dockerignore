@@ -1,0 +1,11 @@
+__pycache__/
+data_gathering
+*.pyc
+*.pyo
+*.pyd
+venv/
+.git/
+.docker
+.gitignore
+.env/
+.venv/
