@@ -2,6 +2,7 @@ from typing import Any, Dict, List
 from annoy import AnnoyIndex
 import tensorflow as tf
 from search_engine import DataPipeline
+import pickle
 
 def _parse_example(example: tf.Tensor) -> Dict[str, tf.Tensor]:
     """
@@ -69,6 +70,7 @@ class IndexBuilder:
             file_path (str): Path to the file where the index will be saved.
         """
         self._index.save(file_path)
+
 
     def load_from_file(self, file_path: str) -> AnnoyIndex:
         """
