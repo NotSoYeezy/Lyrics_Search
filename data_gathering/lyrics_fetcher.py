@@ -53,6 +53,7 @@ class LyricsFetcher:
                     }
                     with open(file_path, "w", encoding='utf-8') as f:
                         json.dump(song_dict, f, indent=4, ensure_ascii=False)
-            except:
+            # TODO: REPLACE THAT BROAD TRY-CATCH STATEMENT
+            except: # BROAD TRY-CATCH FOR TESTING PURPOSES
                 continue
 
