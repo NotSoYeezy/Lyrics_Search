@@ -8,12 +8,13 @@ import glob
 import json
 
 
-def save_to_json(lyrics_path: str):
+def save_to_json(lyrics_path: str, output_file: str = "lyrics.json"):
     """
-    Saves lyrics data do one json file.
+    Saves lyrics data to one JSON file.
 
     Args:
         lyrics_path (str): Path where folder with lyrics, divided into artists subfolder is stored.
+        output_file (str): Path to the output JSON file. Defaults to "lyrics.json".
     """
     artists_paths = [x[0] for x in os.walk(lyrics_path)]
     data = []
@@ -33,5 +34,5 @@ def save_to_json(lyrics_path: str):
                     }
                 )
                 i += 1
-    with open("lyrics.json", "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
