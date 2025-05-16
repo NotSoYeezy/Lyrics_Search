@@ -7,7 +7,6 @@ from data_gathering.save_to_tsv import save_to_tsv
 
 @pytest.fixture
 def setup_test_environment(tmp_path):
-    # Tworzenie tymczasowego katalogu lyrics
     lyrics_dir = tmp_path / "lyrics"
     lyrics_dir.mkdir()
 
@@ -35,15 +34,12 @@ def test_save_to_tsv_success(setup_test_environment):
     lyrics_dir, output_dir = setup_test_environment
     output_tsv = output_dir / "all_lyrics.tsv"
 
-    # Ustawienie tymczasowego katalogu jako głównego katalogu lyrics
     os.chdir(lyrics_dir.parent)
 
     save_to_tsv(file_path=str(output_tsv))
 
-    # Sprawdzenie, czy plik TSV został utworzony
     assert output_tsv.exists()
 
-    # Weryfikacja zawartości pliku TSV
     with open(output_tsv, newline='', encoding='utf-8') as tsvfile:
         reader = csv.DictReader(tsvfile, delimiter='\t')
         rows = list(reader)
@@ -56,12 +52,10 @@ def test_save_to_tsv_handles_invalid_json(setup_test_environment, capsys):
     lyrics_dir, output_dir = setup_test_environment
     output_tsv = output_dir / "all_lyrics.tsv"
 
-    # Ustawienie tymczasowego katalogu jako głównego katalogu lyrics
     os.chdir(lyrics_dir.parent)
 
     save_to_tsv(file_path=str(output_tsv))
 
-    # Sprawdzenie, czy odpowiedni komunikat o błędzie został wyświetlony
     captured = capsys.readouterr()
     assert "Error: Could not decode JSON" in captured.out
 
@@ -69,12 +63,10 @@ def test_save_to_tsv_handles_missing_data(setup_test_environment, capsys):
     lyrics_dir, output_dir = setup_test_environment
     output_tsv = output_dir / "all_lyrics.tsv"
 
-    # Ustawienie tymczasowego katalogu jako głównego katalogu lyrics
     os.chdir(lyrics_dir.parent)
 
     save_to_tsv(file_path=str(output_tsv))
 
-    # Sprawdzenie, czy odpowiedni komunikat o brakujących danych został wyświetlony
     captured = capsys.readouterr()
     assert "Warning: Missing 'title' or 'lyrics' key" in captured.out
 
