@@ -59,8 +59,8 @@ The project consists of several key components:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd polish-lyrics-search
+   git clone https://github.com/NotSoYeezy/Lyrics_Search
+   cd Lyrics_Search
    ```
 
 2. Configure environment variables:
