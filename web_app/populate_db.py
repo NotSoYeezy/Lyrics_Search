@@ -48,6 +48,6 @@ def populate_db_from_json(app, json_path: str):
 
 if __name__ == "__main__":
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    json_path = os.path.join(os.path.dirname(script_dir), "data_gathering", "outputs", "lyrics.json")
+    json_path = os.path.join(os.path.dirname(script_dir), "web_app/data_for_population", "lyrics.json")
     app = create_app()
     populate_db_from_json(app, json_path)

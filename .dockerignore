@@ -1,11 +1,17 @@
+# Ignore Python cache files
 __pycache__/
-data_gathering
 *.pyc
 *.pyo
-*.pyd
+
+# Ignore virtual environments
 venv/
+env/
+
+# Ignore version control files
 .git/
-.docker
 .gitignore
-.env/
-.venv/
+
+# Ignore other unnecessary files
+*.log
+*.tmp
+
