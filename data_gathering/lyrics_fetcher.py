@@ -19,7 +19,7 @@ class LyricsFetcher:
         return genius
 
     def _clean_lyrics(self, lyrics: str) -> str:
-        cleaned_lines = [line for line in lyrics.split("\n") if not re.match(r"^\[.*\]", line) and line.strip()][1:]
+        cleaned_lines = [line for line in lyrics.split("\n") if not re.match(r"^\[.*\]", line) and line.strip()]
         return "\n".join(cleaned_lines)
 
     @classmethod
@@ -42,8 +42,12 @@ class LyricsFetcher:
                 max_songs=songs_per_artist,
                 sort=sort_by,
             )
+            if not artist_query:
+                continue  # Skip if no artist data is found
             try:
                 for song in artist_query.songs:
+                    if not song.lyrics:
+                        continue  # Skip if lyrics are missing
                     cleaned_lyrics = self._clean_lyrics(song.lyrics)
                     os.makedirs(f'lyrics/{artist}', exist_ok=True)
                     file_path = f"lyrics/{artist}/{song.title}.json"
@@ -53,7 +57,6 @@ class LyricsFetcher:
                     }
                     with open(file_path, "w", encoding='utf-8') as f:
                         json.dump(song_dict, f, indent=4, ensure_ascii=False)
-            # TODO: REPLACE THAT BROAD TRY-CATCH STATEMENT
-            except: # BROAD TRY-CATCH FOR TESTING PURPOSES
+            except Exception as e:  # Log the error for debugging
+                print(f"Error processing artist {artist}: {e}")
                 continue
-
