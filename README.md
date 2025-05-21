@@ -17,6 +17,11 @@ This project implements a lyrics search engine that allows users to find Polish 
 * PostgreSQL database for song metadata storage
 * Dockerized deployment for easy setup
 
+## Screenshots
+
+![Application main interface](screenshots/screenshot.png)
+*Main search interface showing results for a sample query*
+
 ## Architecture
 
 The project consists of several key components:
@@ -140,3 +145,5 @@ The container exposes SSH access on port 2222 for development purposes:
 * MusicBrainz API for artist data
 * Genius API for lyrics data
 * TensorFlow Hub for the Universal Sentence Encoder model
+
+`
