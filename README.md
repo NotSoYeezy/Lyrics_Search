@@ -1,6 +1,7 @@
-# Polish Lyrics Search Engine
+# Lyrics Search Engine
 
-A full-stack application for semantic search of Polish song lyrics using natural language processing and machine learning.
+A full-stack application for semantic search of song lyrics using natural language processing and machine learning.
+This project uses Polish Rap Lyrics as a dataset, however you can customize the project for your needs.
 
 ## Overview
 
